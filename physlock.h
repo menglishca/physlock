@@ -54,6 +54,7 @@ typedef struct options_s {
 	int disable_sysrq;
 	int lock_switch;
 	int mute_kernel_messages;
+	int username;
 	const char *prompt;
 } options_t;
 
@@ -99,4 +100,3 @@ void vt_secure(vt_t*);
 CLEANUP void vt_reset(vt_t*);
 
 #endif /* PHYSLOCK_H */
-

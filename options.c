@@ -36,7 +36,7 @@ void print_version() {
 
 void parse_options(int argc, char **argv) {
 	int opt;
-	
+
 	progname = strrchr(argv[0], '/');
 	progname = progname != NULL ? progname + 1 : argv[0];
 
@@ -45,7 +45,7 @@ void parse_options(int argc, char **argv) {
 	_options.lock_switch = -1;
 	_options.mute_kernel_messages = 0;
 
-	while ((opt = getopt(argc, argv, "dhLlmp:sv")) != -1) {
+	while ((opt = getopt(argc, argv, "dhLlmp:svu")) != -1) {
 		switch (opt) {
 			case '?':
 				print_usage();
@@ -71,10 +71,12 @@ void parse_options(int argc, char **argv) {
 			case 's':
 				_options.disable_sysrq = 1;
 				break;
+			case 'u':
+				_options.username = 1;
+				break;
 			case 'v':
 				print_version();
 				exit(0);
 		}
 	}
 }
-

@@ -66,7 +66,7 @@ void setup_signal(int signum, void (*handler)(int)) {
 	sigact.sa_flags = 0;
 	sigact.sa_handler = handler;
 	sigemptyset(&sigact.sa_mask);
-	
+
 	if (sigaction(signum, &sigact, NULL) < 0)
 		error(0, errno, "signal %d", signum);
 }
@@ -168,6 +168,12 @@ int main(int argc, char **argv) {
 
 	openlog(progname, LOG_PID, LOG_AUTH);
 
+	fprintf(vt.ios, "\n");
+
+	if (options->username) {
+		fprintf(vt.ios, "Welcome back, %s\n\n", u->name);
+	}
+
 	if (options->prompt != NULL && options->prompt[0] != '\0') {
 		fprintf(vt.ios, "%s\n\n", options->prompt);
 	}
@@ -189,4 +195,3 @@ int main(int argc, char **argv) {
 
 	return 0;
 }
-
