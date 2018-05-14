@@ -58,4 +58,5 @@ The following command-line arguments are supported:
     -m       mute kernel messages on console while physlock is running
     -p MSG   Display MSG before the password prompt
     -s       disable sysrq key while physlock is running
+    -u       print username above prompt
     -v       print version information and exit
