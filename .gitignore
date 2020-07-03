@@ -1,4 +1,6 @@
 *.o
 physlock
-cmake-build-debug/
+version.h
+config.h
+version.h
 .idea/
