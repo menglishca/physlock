@@ -46,8 +46,9 @@ void parse_options(int argc, char **argv) {
 	_options.disable_issue = 0;
 	_options.lock_switch = -1;
 	_options.mute_kernel_messages = 0;
+    _options.issue_file;
 
-	while ((opt = getopt(argc, argv, "dhLlmp:svz")) != -1) {
+	while ((opt = getopt(argc, argv, "dhLlmp:svzi")) != -1) {
 		switch (opt) {
 			case '?':
 				print_usage();
@@ -79,6 +80,8 @@ void parse_options(int argc, char **argv) {
             case 'z':
                 _options.disable_issue = 1;
                 break;
+            case 'i':
+                strcpy(_options.issue_file, optarg);
 		}
 	}
 }

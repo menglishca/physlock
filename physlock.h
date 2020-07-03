@@ -56,6 +56,7 @@ typedef struct options_s {
 	int lock_switch;
 	int mute_kernel_messages;
 	const char *prompt;
+    char issue_file[];
 } options_t;
 
 extern const options_t *options;
