@@ -1,4 +1,6 @@
-config.h
-version.h
 *.o
 physlock
+version.h
+config.h
+version.h
+.idea/

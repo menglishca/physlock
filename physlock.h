@@ -52,10 +52,12 @@ int authenticate(userinfo_t*);
 typedef struct options_s {
 	int detach;
 	int disable_sysrq;
+    int disable_issue;
 	int lock_switch;
 	int mute_kernel_messages;
 	int staggered;
 	const char *prompt;
+    char issue_file[];
 } options_t;
 
 extern const options_t *options;
@@ -74,6 +76,7 @@ int get_user_utmp(userinfo_t*, int);
 extern const char *progname;
 
 void error_init(int);
+void error_close(void);
 void error(int, int, const char*, ...);
 char* estrdup(const char*);
 int read_int_from_file(const char*, char);
@@ -99,6 +102,19 @@ void vt_reopen(vt_t*);
 CLEANUP int vt_release(vt_t*, int);
 void vt_secure(vt_t*);
 CLEANUP void vt_reset(vt_t*);
+
+/* issue.h */
+
+// This sugar makes using singular/plural more simple
+#define P_(singular, plural, n) ((n) == 1 ? (singular) : (plural))
+
+/*
+ * This function reads and print out the /etc/issue file, replacing escape
+ * sequences like '\l', '\u', and '\t' - in the same manner as agetty(8).
+ * This function only implements a subset of the escape sequences supported
+ * by agetty(8)!!!
+ */
+void print_issue_file(vt_t, int);
 
 #endif /* PHYSLOCK_H */
 
