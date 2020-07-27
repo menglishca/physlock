@@ -28,7 +28,7 @@ static options_t _options;
 const options_t *options = (const options_t*) &_options;
 
 void print_usage() {
-	printf("usage: physlock [-dhLlmsvwz] [-p MSG]\n");
+	printf("usage: physlock [-dhLlmsbanvwz] [-p MSG]\n");
 }
 
 void print_version() {
@@ -37,7 +37,7 @@ void print_version() {
 
 void parse_options(int argc, char **argv) {
 	int opt;
-	
+
 	progname = strrchr(argv[0], '/');
 	progname = progname != NULL ? progname + 1 : argv[0];
 
@@ -48,8 +48,9 @@ void parse_options(int argc, char **argv) {
 	_options.mute_kernel_messages = 0;
 	_options.staggered = 0;
 	_options.issue_file;
+	_options.no_auth = 0;
 
-	while ((opt = getopt(argc, argv, "dhLlmp:svwzi")) != -1) {
+	while ((opt = getopt(argc, argv, "dhLlmnp:svwzib:a:")) != -1) {
 		switch (opt) {
 			case '?':
 				print_usage();
@@ -69,8 +70,17 @@ void parse_options(int argc, char **argv) {
 			case 'm':
 				_options.mute_kernel_messages = 1;
 				break;
+			case 'n':
+				_options.no_auth = 1;
+				break;
 			case 'p':
 				_options.prompt = optarg;
+				break;
+			case 'b':
+				_options.command_before = optarg;
+				break;
+			case 'a':
+				_options.command_after = optarg;
 				break;
 			case 's':
 				_options.disable_sysrq = 1;

@@ -52,12 +52,16 @@ int authenticate(userinfo_t*);
 typedef struct options_s {
 	int detach;
 	int disable_sysrq;
-    int disable_issue;
+	int disable_issue;
 	int lock_switch;
 	int mute_kernel_messages;
 	int staggered;
 	const char *prompt;
-    char issue_file[];
+	char issue_file[];
+	int no_auth;
+	const char *prompt;
+	const char *command_before;
+	const char *command_after;
 } options_t;
 
 extern const options_t *options;
