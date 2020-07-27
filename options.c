@@ -50,7 +50,7 @@ void parse_options(int argc, char **argv) {
 	_options.issue_file;
 	_options.no_auth = 0;
 
-	while ((opt = getopt(argc, argv, "dhLlmnp:svwzib:a:")) != -1) {
+	while ((opt = getopt(argc, argv, "dhLlmnp:svwzibu:a:")) != -1) {
 		switch (opt) {
 			case '?':
 				print_usage();
@@ -85,6 +85,9 @@ void parse_options(int argc, char **argv) {
 			case 's':
 				_options.disable_sysrq = 1;
 				break;
+			case 'u':
+				_options.username = 1;
+				break;
 			case 'v':
 				print_version();
 				exit(0);
@@ -100,4 +103,3 @@ void parse_options(int argc, char **argv) {
 		}
 	}
 }
-
