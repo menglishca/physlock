@@ -89,5 +89,6 @@ The following command-line arguments are supported:
     -n       don't actually authenticate: just execute commands
     -p MSG   Display MSG before the password prompt
     -s       disable sysrq key while physlock is running
+    -u       print username above prompt
     -v       print version information and exit
     -z       disable printing the /etc/issue file

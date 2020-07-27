@@ -227,6 +227,12 @@ int main(int argc, char **argv) {
 		run_command(options->command_before, &user);
 	}
 
+	fprintf(vt.ios, "\n");
+
+	if (options->username) {
+		fprintf(vt.ios, "Welcome back, %s\n\n", u->name);
+	}
+
 	if (options->prompt != NULL && options->prompt[0] != '\0') {
 		fprintf(vt.ios, "%s\n\n", options->prompt);
 	}
@@ -278,4 +284,3 @@ int main(int argc, char **argv) {
 
 	return 0;
 }
-
